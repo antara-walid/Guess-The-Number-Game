@@ -20,18 +20,23 @@ function changeMsgColor(color) {
   document.querySelector(".message").style.color = color;
   document.querySelector(".message").style.fontWeight = "900";
 }
+
 function biggerMsg() {
   document.querySelector(".message").style.fontSize = "4em";
 }
+function hideQuestion() {
+  document.querySelector(".number i").style.display = "none";
+}
 function showMysteryNumber() {
-  document.querySelector(".number").textContent = mysterNumber;
-  document.querySelector(".number").style.fontSize = "27vh";
-  document.querySelector(".number").style.color = "#66ffff";
-  document.querySelector(".number").style.backgroundColor = "#43E890";
+  document.querySelector(".mysteryNumber").textContent = mysterNumber;
+  document.querySelector(".mysteryNumber").style.display = "block";
+  document.querySelector(".mysteryNumber").style.color = "#66ffff";
+  document.querySelector(".mysteryNumber").style.backgroundColor = "#43E890";
 }
 // the game logic
 
 document.querySelector(".check").addEventListener("click", function () {
+  //invalid question
   if (score > 1) {
     number = Number(document.querySelector(".guess").value);
     if (!number || number > 20 || number < 1) {
@@ -40,6 +45,7 @@ document.querySelector(".check").addEventListener("click", function () {
       showMsg(number > mysterNumber ? "↗↗too high" : "↘↘too low");
       score--;
       showScore(score);
+      // player win
     } else {
       showMsg("🤩 you won");
       changeMsgColor("#43E890");
@@ -47,8 +53,10 @@ document.querySelector(".check").addEventListener("click", function () {
       showMysteryNumber();
       if (score > highScore) highScore = score;
       showHighScore(highScore);
+      hideQuestion();
     }
   } else {
+    // player lost
     showMsg("😩 You lost");
     showScore(0);
     // make the msg bigger
@@ -59,3 +67,15 @@ document.querySelector(".check").addEventListener("click", function () {
 });
 
 // reset button
+
+document.querySelector(".reset").addEventListener("click", function () {
+  score = 20;
+  mysterNumber = Math.trunc(Math.random() * 20) + 1;
+  showMsg("Type a number to start");
+  document.querySelector(".message").style.color = "#f2d0c4";
+  document.querySelector(".message").style.fontWeight = "400";
+  document.querySelector(".message").style.fontSize = "2.5rem";
+  document.querySelector(".number i").style.display = "block";
+  showScore(score);
+  document.querySelector(".mysteryNumber").style.display = "none";
+});
