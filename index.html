@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guess the number game</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/bd79a5c887.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <div class="number">
+        <i class="far fa-question-circle"></i>
+      </div>
+      <div class="title-description">
+        <div class="title">
+          <h1>
+            Guess The number
+            <img
+              class="manThinking"
+              alt="a man thinking "
+              src="/photos/man-thinking.png"
+            />
+          </h1>
+        </div>
+        <div class="discription">
+          <div>Chose a number between 1 and 20</div>
+          <div>and try to beat the high Score</div>
+        </div>
+      </div>
+    </header>
+    <div class="button">
+        <div>to play again press the reset button <i class="fas fa-arrow-right"></i></div>
+      <button class="btn reset">Reset</button>
+    </div>
+    <main>
+        <section class="left">
+            <input type="number" class="guess"></input>
+            <button class="btn check">check!</button>
+        </section>
+        <section class="right">
+            <p><i class="far fa-grin-stars"></i>
+                 Type a number to start</p>
+            <p><i class="fas fa-award"></i> score:
+                <span class="score">20</span>
+            </p>
+            <p><i class="fas fa-trophy"></i> high score:
+                <span class="highscore">0</span>
+            </p>
+        </section>
+
+    </main>
+  </body>
+</html>
